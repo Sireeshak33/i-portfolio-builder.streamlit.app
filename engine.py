@@ -1,12 +1,11 @@
-import os
-from dotenv import load_dotenv
+import streamlit as st
 from pydantic import BaseModel, Field
 from typing import List, Optional
 from google import genai
 from google.genai import types
 
-load_dotenv()
-client = genai.Client()
+# Hardwire the Streamlit secret directly into the client
+client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
 
 class Experience(BaseModel):
     company: str
